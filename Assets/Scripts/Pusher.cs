@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Pusher : MonoBehaviour
 {
-    int num = 0;
-    public GameObject gameObject = default;
-
+    public GameObject pusher = default;
+    public Vector3 defaultPosition;
+    public float pusuPower = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        num = 1 + 1;
-        Debug.Log(num);
+        defaultPosition = pusher.transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = gameObject.transform.position + new Vector3(0, 0, -1);
+        float z = pusuPower * Mathf.Sin(Time.time);
+        pusher.transform.localPosition = new Vector3(0, 0, z) + defaultPosition;
     }
 }
